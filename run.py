@@ -1,4 +1,14 @@
-from dungeon import Dungeon
+from attr import asdict
+from tinydb import TinyDB, Query
 
-with Dungeon("Beginner's Forest", level=1, depth=3, monsters=[]) as d:
-    d.explore()
+from battler import Battler
+
+
+Player = Query()
+res = db.search(Player.player.exists())
+if res:
+    print(res)
+else:
+    name = input("Enter your name: ")
+    battler = Battler(name=name)
+    db.insert({'player': battler.asdict()})
