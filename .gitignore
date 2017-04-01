@@ -90,3 +90,6 @@ ENV/
 
 # database
 rpg.json
+
+# cloud9
+.~c9*

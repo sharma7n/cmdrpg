@@ -1,14 +1,13 @@
 from attr import asdict
-from tinydb import TinyDB, Query
+from database import db, Player
 
 from battler import Battler
 
 
-Player = Query()
-res = db.search(Player.player.exists())
+res = db.search(Player.exists())
 if res:
-    print(res)
+    print(res[0]['player'])
 else:
     name = input("Enter your name: ")
     battler = Battler(name=name)
-    db.insert({'player': battler.asdict()})
+    db.insert({'player': asdict(battler)})

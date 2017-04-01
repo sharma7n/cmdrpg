@@ -1,0 +1,1 @@
+from .battler import Depletable, Battler
